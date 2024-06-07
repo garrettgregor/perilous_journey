@@ -6,4 +6,8 @@ class LinkedList
   def initialize
     @head = nil
   end
+
+  def append(surname)
+    @head = Node.new(surname)
+  end
 end
