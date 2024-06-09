@@ -18,6 +18,43 @@ RSpec.describe LinkedList do
     end
   end
 
+  describe '#prepend' do
+    it 'adds a node to the beginning of the list' do
+      list.append('Brooks')
+      expect(list.head.surname).to eq('Brooks')
+      expect(list.to_string).to eq('The Brooks family')
+
+      list.append('Henderson')
+      expect(list.head.surname).to eq('Brooks')
+      expect(list.head.next_node.surname).to eq('Henderson')
+      expect(list.to_string).to eq('The Brooks family, followed by the Henderson family')
+
+      list.prepend('McKinney')
+      expect(list.head.surname).to eq('McKinney')
+      expect(list.head.next_node.surname).to eq('Brooks')
+      sentence = 'The McKinney family, followed by the Brooks family, followed by the Henderson family'
+      expect(list.to_string).to eq(sentence)
+    end
+  end
+
+  describe '#insert' do
+    it 'inserts a node at the index position provided' do
+      list.append('Brooks')
+      expect(list.to_string).to eq('The Brooks family')
+
+      list.append('Henderson')
+      list.prepend('McKinney')
+
+      sentence = 'The McKinney family, followed by the Brooks family, followed by the Henderson family'
+      expect(list.to_string).to eq(sentence)
+      expect(list.count).to eq(3)
+
+      list.insert(1, 'Lawson')
+      sentence = 'The McKinney family, followed by the Lawson family, followed by the Brooks family, followed by the Henderson family'
+      expect(list.to_string).to eq(sentence)
+    end
+  end
+
   describe '#count' do
     it 'adds a node to the head' do
       expect(list.count).to eq(0)

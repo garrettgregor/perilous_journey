@@ -1,7 +1,7 @@
 require './spec/spec_helper'
 
 RSpec.describe Node do
-  let!(:node) {Node.new('Burke')}
+  let!(:node) { Node.new('Burke') }
 
   describe '#initialize' do
     it 'should initialize a new node' do
