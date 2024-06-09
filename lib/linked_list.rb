@@ -1,4 +1,4 @@
-require "node"
+require 'node'
 
 class LinkedList
   attr_reader :head
@@ -16,6 +16,33 @@ class LinkedList
       current_node = @head.next_node
       current_node = @head.next_node until current_node.next_node.nil?
       current_node.next_node = Node.new(surname)
+    end
+  end
+
+  def prepend(surname)
+    if @head.nil?
+      @head = Node.new(surname)
+    else
+      previous_head = @head
+      @head = Node.new(surname)
+      @head.next_node = previous_head
+    end
+  end
+
+  def insert(index_position, surname)
+    if index_position.zero? && count >= 0
+      prepend(surname)
+    else
+      previous_node = nil
+      current_node = @head
+      index = 0
+      until index == index_position
+        index += 1
+        previous_node = current_node
+        current_node = current_node.next_node
+      end
+      previous_node.next_node = Node.new(surname)
+      previous_node.next_node.next_node = current_node
     end
   end
 
@@ -40,7 +67,7 @@ class LinkedList
 
   def to_string
     if count == 0
-      "No families"
+      'No families'
     elsif count == 1
       "The #{@head.surname} family"
     else
