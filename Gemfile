@@ -1,6 +1,6 @@
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
 gem 'pry'
-gem 'rubocop', require: false
 gem 'rspec'
+gem 'rubocop', require: false
 gem 'simplecov', require: false, group: :test
